@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro para Sorteo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Librería Font Awesome -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('4fondo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            width: 100%;  /* Aseguramos que el body ocupe todo el ancho */
+            overflow-x: hidden;  /* Evitamos el desplazamiento horizontal */
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 200px auto;
+            border-radius: 10px;
+            width: 90%;  /* Usamos un ancho del 90% para dispositivos más pequeños */
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff9800;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e68900;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 15px;
+            color: #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer a {
+            color: #ccc;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #ff9800;
+        }
+
+        .social-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 15px;
+        }
+
+        .social-container a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .social-container a:hover {
+            color: #ff9800;
+        }
+
+        .success-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .success-modal h2 {
+            margin-bottom: 10px;
+        }
+
+        .success-modal button {
+            margin-top: 10px;
+            background-color: #ff9800;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .success-modal button:hover {
+            background-color: #e68900;
+        }
+
+        /* Media Query para pantallas pequeñas */
+        @media screen and (max-width: 768px) {
+            .container {
+                margin: 50px auto;
+                padding: 15px;
+                width: 85%;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .footer {
+                font-size: 13px;
+            }
+
+            .social-container {
+                font-size: 20px;
+            }
+
+            .social-container a {
+                font-size: 20px;
+            }
+        }
+
+        /* Media Query para pantallas muy pequeñas (como teléfonos) */
+        @media screen and (max-width: 480px) {
+            .container {
+                margin: 30px auto;
+                padding: 10px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            .footer {
+                font-size: 12px;
+            }
+
+            .social-container {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>REGÍSTRATE EN EL SORTEO AQUÍ</h1>
+        <form id="registrationForm">
+            <input type="text" id="name" name="name" placeholder="Nombres completos" required>
+            <input type="text" id="dni" name="dni" placeholder="DNI / PASAPORTE" required>
+            <input type="text" id="phone" name="phone" placeholder="Número de teléfono" required>
+            <input type="text" id="location" name="location" placeholder="Sede de compra" required>
+            <input type="text" id="ticket" name="ticket" placeholder="Número de boleto" required>
+            <button type="submit">Participar</button>
+        </form>
+        <div class="footer">
+            <span><a href="https://drive.google.com/file/d/1i_aFVCjMM80joCy5EuQEFl16LZAlOSpu/view?usp=sharing" target="_blank">Sorteo sujeto a términos y condiciones</a></span>
+            <div class="social-container">
+                <div>SÍGUENOS EN:</div>
+                <!-- Íconos de redes sociales -->
+                <a href="https://www.facebook.com/transportesviape" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/transportesviape/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@transportesviape" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="success-modal">
+        <h2>¡Te registraste exitosamente!</h2>
+        <p>Vía, la vía más segura a tu destino.</p>
+        <button onclick="closeModal()">Cerrar</button>
+    </div>
+
+    <script>
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // Evita que el formulario se envíe de forma tradicional
+
+    const formData = {
+        name: document.getElementById('name').value,
+        dni: document.getElementById('dni').value,
+        phone: document.getElementById('phone').value,
+        location: document.getElementById('location').value,
+        ticket: document.getElementById('ticket').value
+    };
+
+    console.log('Formulario enviado:', formData);  // Muestra los datos en consola para asegurarte de que están bien
+
+    // Aquí enviamos los datos al Web App de Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbyY_2nDxa8TmlLcWmfswwPfqXf69WlN4toFz-i-36d6HpsONGa3k8vlS0nIUmOO881Cjw/exec', {
+        method: 'POST',
+        body: new URLSearchParams(formData)  // Convierte los datos a formato de parámetros de URL
+    })
+    .then(response => response.text())  // Convierte la respuesta a texto
+    .then(data => {
+        console.log('Respuesta de Google Apps Script:', data);  // Muestra la respuesta
+        document.getElementById('successModal').style.display = 'block';  // Muestra el modal de éxito
+    })
+    .catch(error => {
+        console.error('Error al enviar los datos:', error);  // Muestra cualquier error
+    });
+});
+
+function closeModal() {
+    document.getElementById('successModal').style.display = 'none';  // Cierra el modal
+}
+    </script>
+</body>
+</html>
+
